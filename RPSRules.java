@@ -177,4 +177,42 @@ public class RPSRules {
         }
         return false;
     }
+
+    public static boolean isValidChoice(String choice) {
+        String choice1 = choice.toLowerCase();
+        if (choice1.equals(null)) {
+            return false;
+        } else if (choice1.equals("rock")) {
+            return true;
+        } else if (choice1.equals("scissors")) {
+            return true;
+        } else if (choice1.equals("paper")) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public static String randomChoice() {
+        int number = randomNumber(0, 2);
+        if (number == 0) {
+            return "rock";
+        } else if (number == 1) {
+            return "scissors";
+        } else {
+            return "paper";
+        }
+    }
+
+    public static boolean beats(String mine, String theirs) {
+        if ((mine.equals("rock")) && (theirs.equals("scissors"))) {
+            return true;
+        } else if ((mine.equals("scissors")) && (theirs.equals("paper"))) {
+            return true;
+        } else if ((mine.equals("paper")) && (theirs.equals("rock"))) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
