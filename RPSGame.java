@@ -18,6 +18,14 @@ public class RPSGame {
         return computer;
     }
 
+    public void readChoice(Scanner input) {
+        System.out.println(player.getName() + ", choose rock, paper, or scissors:");
+        String typed = input.nextLine();
+        while (!player.choose(typed)) {
+            typed = input.nextLine();
+        }
+    }
+
     public String winner() {
         String human = player.getChoice();
         computer.choose(RPSRules.randomChoice());
