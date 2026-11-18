@@ -4,13 +4,15 @@
  * 1. The user types 3, presses Enter, types rock, and presses Enter.
  *    After int rounds = input.nextInt(); runs, what does
  *    input.nextLine() return? Explain why.
- *    Answer: rock since he typed rock then pressed enter
- * which is until the nextLine checks for.
+ *    Answer: It returns "" (an empty string) because nextInt() leaves the 
+ *    Enter key (\n) behind, and nextLine() grabs it right away instead 
+ *    of waiting for new typing.
  *
  * 2. In this lab, main makes one Scanner for the keyboard and passes
  *    it to each method that reads. Why not have each method make its
  *    own new Scanner(System.in)?
- *    Answer:
+ *    Answer: Making multiple Scanners causes problems, and closing any 
+ *    of them will turn off the keyboard (System.in) for the whole program.
  */
 public class RPSGameTester {
     public static void main(String[] args) {

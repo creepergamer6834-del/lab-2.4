@@ -20,7 +20,9 @@ public class RPSGame {
 
     public String winner() {
         String human = player.getChoice();
-        String clanker = RPSRules.randomChoice();
+        computer.choose(RPSRules.randomChoice());
+        String clanker = computer.getChoice();
+
         if (RPSRules.beats(human, clanker)) {
             return player.getName();
         } else {
@@ -32,12 +34,33 @@ public class RPSGame {
         }
     }
 
-    public static int readRounds(Scanner input) {
-        Scanner type = new Scanner(System.in);
-        System.out.println("How many rounds?");
-        int rounds = type.nextInt();
-        type.nextLine();
+    public String describeOutcome() {
+        String human = player.getChoice();
+        computer.choose(RPSRules.randomChoice());
+        String clanker = computer.getChoice();
 
-        type.close();
+        if (RPSRules.beats(human, clanker)) {
+            return human + " beats " + clanker + ", you win!";
+        } else if (RPSRules.beats(clanker, human)) {
+            return clanker + " beats " + human + ", you lose!";
+        } else {
+            return "both chose " + human + ", tied!";
+        }
+    }
+
+    public static int readRounds(Scanner input) {
+        System.out.println("How many rounds?");
+        int rounds = input.nextInt();
+        input.nextLine();
+        return rounds;
+    }
+
+    public static int readRoundsChecked(Scanner input) {
+        while (!input.hasNextInt()) {
+            input.next();
+        }
+        int rounds = input.nextInt();
+        input.nextLine();
+        return rounds;
     }
 }

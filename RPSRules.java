@@ -179,10 +179,11 @@ public class RPSRules {
     }
 
     public static boolean isValidChoice(String choice) {
-        String choice1 = choice.toLowerCase();
-        if (choice1.equals(null)) {
+        if (choice == null) {
             return false;
-        } else if (choice1.equals("rock")) {
+        }
+        String choice1 = choice.toLowerCase();
+        if (choice1.equals("rock")) {
             return true;
         } else if (choice1.equals("scissors")) {
             return true;
@@ -194,7 +195,7 @@ public class RPSRules {
     }
 
     public static String randomChoice() {
-        int number = randomNumber(0, 2);
+        int number = randomNumber(0, 3);
         if (number == 0) {
             return "rock";
         } else if (number == 1) {
@@ -205,6 +206,9 @@ public class RPSRules {
     }
 
     public static boolean beats(String mine, String theirs) {
+        if (mine == null || theirs == null) {
+            return false;
+        }
         if ((mine.equals("rock")) && (theirs.equals("scissors"))) {
             return true;
         } else if ((mine.equals("scissors")) && (theirs.equals("paper"))) {

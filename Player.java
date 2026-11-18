@@ -4,6 +4,7 @@ public class Player {
 
     public Player(String name) {
         this.name = name;
+        this.choice = "";
     }
 
     public String getName() {
@@ -15,15 +16,20 @@ public class Player {
     }
 
     public boolean choose(String typed) {
-        if (typed.equals(null)) {
+        if (typed == null) {
             return false;
-        } else {
-            return RPSRules.isValidChoice(typed);
         }
+        if (RPSRules.isValidChoice(typed)) {
+            this.choice = typed;
+            return true;
+        }
+        return false;
     }
 
     public String toString() {
-        String words = name + " chose " + choice.toLowerCase() + ".";
-        return words;
+        if (choice == null || choice.isEmpty()) {
+            return name + " has not chosen yet.";
+        }
+        return name + " chose " + choice.toLowerCase() + ".";
     }
 }
