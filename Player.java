@@ -4,7 +4,7 @@ public class Player {
 
     public Player(String name) {
         this.name = name;
-        this.choice = "";
+        this.choice = RPSRules.randomChoice();
     }
 
     public String getName() {
@@ -19,8 +19,8 @@ public class Player {
         if (typed == null) {
             return false;
         }
-        if (RPSRules.isValidChoice(typed)) {
-            this.choice = typed;
+        if (RPSRules.isValidChoice(typed.toLowerCase())) {
+            this.choice = typed.toLowerCase();
             return true;
         }
         return false;

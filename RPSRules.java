@@ -182,12 +182,12 @@ public class RPSRules {
         if (choice == null) {
             return false;
         }
-        String choice1 = choice.toLowerCase();
-        if (choice1.equals("rock")) {
+        // Must be strictly lowercase to match test 2 requirements
+        if (choice.equals("rock")) {
             return true;
-        } else if (choice1.equals("scissors")) {
+        } else if (choice.equals("scissors")) {
             return true;
-        } else if (choice1.equals("paper")) {
+        } else if (choice.equals("paper")) {
             return true;
         } else {
             return false;

@@ -19,16 +19,20 @@ public class RPSGame {
     }
 
     public void readChoice(Scanner input) {
-        System.out.println(player.getName() + ", choose rock, paper, or scissors:");
-        String typed = input.nextLine();
-        while (!player.choose(typed)) {
-            typed = input.nextLine();
+        System.out.println("Rock, paper, or scissors?");
+        while (true) {
+            if (input.hasNextLine()) {
+                String typed = input.nextLine();
+                if (player.choose(typed)) {
+                    break;
+                }
+            }
+            System.out.println("Rock, paper, or scissors?");
         }
     }
 
     public String winner() {
         String human = player.getChoice();
-        computer.choose(RPSRules.randomChoice());
         String clanker = computer.getChoice();
 
         if (RPSRules.beats(human, clanker)) {
@@ -44,7 +48,6 @@ public class RPSGame {
 
     public String describeOutcome() {
         String human = player.getChoice();
-        computer.choose(RPSRules.randomChoice());
         String clanker = computer.getChoice();
 
         if (RPSRules.beats(human, clanker)) {
